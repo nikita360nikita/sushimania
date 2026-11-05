@@ -2542,78 +2542,7 @@
       if (modal) modal.classList.add('hidden');
     }
 
-    // --- 8. MENU SCANS GALLERY (21 PAGES FROM VK) ---
-    const MENU_SCANS = [
-      'assets/menu/menu_01_457250589.jpg',
-      'assets/menu/menu_02_457250590.jpg',
-      'assets/menu/menu_03_457250591.jpg',
-      'assets/menu/menu_04_457250593.jpg',
-      'assets/menu/menu_05_457250594.jpg',
-      'assets/menu/menu_06_457250595.jpg',
-      'assets/menu/menu_07_457250596.jpg',
-      'assets/menu/menu_08_457250597.jpg',
-      'assets/menu/menu_09_457250598.jpg',
-      'assets/menu/menu_10_457250599.jpg',
-      'assets/menu/menu_11_457250600.jpg',
-      'assets/menu/menu_12_457250601.jpg',
-      'assets/menu/menu_13_457250602.jpg',
-      'assets/menu/menu_14_457250603.jpg',
-      'assets/menu/menu_15_457250604.jpg',
-      'assets/menu/menu_16_457250605.jpg',
-      'assets/menu/menu_17_457250606.jpg',
-      'assets/menu/menu_18_457250607.jpg',
-      'assets/menu/menu_19_457250609.jpg',
-      'assets/menu/menu_20_457250647.jpg',
-      'assets/menu/menu_21_457250670.jpg'
-    ];
-
-    let currentScanIndex = 0;
-
-    function openMenuScansModal() {
-      currentScanIndex = 0;
-      updateMenuScanUI();
-      renderScanThumbnails();
-      document.getElementById('menuScansModal').classList.remove('hidden');
-    }
-
-    function closeMenuScansModal() {
-      document.getElementById('menuScansModal').classList.add('hidden');
-    }
-
-    function changeScanPage(delta) {
-      currentScanIndex += delta;
-      if (currentScanIndex < 0) currentScanIndex = MENU_SCANS.length - 1;
-      if (currentScanIndex >= MENU_SCANS.length) currentScanIndex = 0;
-      updateMenuScanUI();
-    }
-
-    function setScanPage(idx) {
-      currentScanIndex = idx;
-      updateMenuScanUI();
-    }
-
-    function updateMenuScanUI() {
-      const img = document.getElementById('currentScanImg');
-      const counter = document.getElementById('menuScanCounter');
-      if (img) img.src = MENU_SCANS[currentScanIndex];
-      if (counter) counter.textContent = `Страница ${currentScanIndex + 1} из ${MENU_SCANS.length}`;
-      
-      document.querySelectorAll('.scan-thumb').forEach((t, i) => {
-        if (i === currentScanIndex) {
-          t.className = 'scan-thumb w-12 h-16 object-cover rounded border-2 border-brand-red shrink-0';
-        } else {
-          t.className = 'scan-thumb w-12 h-16 object-cover rounded border border-slate-300 opacity-60 hover:opacity-100 shrink-0';
-        }
-      });
-    }
-
-    function renderScanThumbnails() {
-      const strip = document.getElementById('scansThumbnailsStrip');
-      if (!strip) return;
-      strip.innerHTML = MENU_SCANS.map((src, i) => `
-        <img src="${src}" onclick="setScanPage(${i})" class="scan-thumb w-12 h-16 object-cover rounded border ${i === currentScanIndex ? 'border-brand-red' : 'border-slate-300 opacity-60'} cursor-pointer shrink-0" alt="Скан ${i+1}">
-      `).join('');
-    }
+    // (Original paper scans removed)
 
     // --- 9. TOAST NOTIFICATIONS ---
     function showToast(text, type = 'info') {
